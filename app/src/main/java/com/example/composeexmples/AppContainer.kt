@@ -14,14 +14,21 @@
  * limitations under the License.
  */
 
-package com.example.composeexmples.app.ui
+package com.example.composeexmples
 
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Shapes
-import androidx.compose.ui.unit.dp
+import android.content.Context
 
-val Shapes = Shapes(
-    small = RoundedCornerShape(percent = 50),
-    medium = RoundedCornerShape(20.dp),
-    large = RoundedCornerShape(0.dp)
-)
+/**
+ * Dependency Injection container at the application level.
+ */
+interface AppContainer {
+}
+
+/**
+ * Implementation for the Dependency Injection container at the application level.
+ *
+ * Variables are initialized lazily and the same instance is shared across the whole app.
+ */
+class AppContainerImpl(private val applicationContext: Context) : AppContainer {
+
+}

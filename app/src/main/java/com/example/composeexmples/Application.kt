@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.composeexmples.app.ui
+package com.example.composeexmples
 
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Shapes
-import androidx.compose.ui.unit.dp
+import android.app.Application
 
-val Shapes = Shapes(
-    small = RoundedCornerShape(percent = 50),
-    medium = RoundedCornerShape(20.dp),
-    large = RoundedCornerShape(0.dp)
-)
+class Application : Application() {
+
+    // AppContainer instance used by the rest of classes to obtain dependencies
+    lateinit var container: AppContainer
+
+    override fun onCreate() {
+        super.onCreate()
+        container = AppContainerImpl(this)
+    }
+}

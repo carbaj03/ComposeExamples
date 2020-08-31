@@ -4,14 +4,15 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import com.example.composeexmples.app.ui.ComposeExmplesTheme
+import com.example.composeexmples.app.common.ProvideDisplayInsets
+import com.example.composeexmples.app.home.HomeScreen
+import com.example.composeexmples.app.ui.AppTheme
 
 @Composable
 fun App(
     navigationViewModel: NavigationViewModel
 ) {
-
-    ComposeExmplesTheme {
+    AppTheme {
         AppContent(
             navigationViewModel = navigationViewModel
         )
@@ -25,19 +26,15 @@ private fun AppContent(
     Crossfade(navigationViewModel.currentScreen) { screen ->
         Surface(color = MaterialTheme.colors.background) {
             when (screen) {
-                is Screen.Home -> HomeScreen(
-                    navigateTo = navigationViewModel::navigateTo,
-                    postsRepository = postsRepository
-                )
-                is Screen.Interests -> InterestsScreen(
-                    navigateTo = navigationViewModel::navigateTo,
-                    interestsRepository = interestsRepository
-                )
-                is Screen.Article -> ArticleScreen(
-                    postId = screen.postId,
-                    postsRepository = postsRepository,
-                    onBack = { navigationViewModel.onBack() }
-                )
+                is Screen.Home ->
+                    ProvideDisplayInsets {
+                        HomeScreen(
+                            navigateTo = navigationViewModel::navigateTo
+                        )
+                    }
+                Screen.Material -> TODO()
+                Screen.Core -> TODO()
+                Screen.Foundation -> TODO()
             }
         }
     }
