@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val systemUiController = remember { SystemUiController(window) }
             Providers(SysUiController provides systemUiController) {
-
                 App(navigationViewModel = navigationViewModel)
             }
         }

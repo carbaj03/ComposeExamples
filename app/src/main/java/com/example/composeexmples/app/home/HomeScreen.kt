@@ -17,8 +17,12 @@
 package com.example.composeexmples.app.home
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.samples.SimpleRelativeToSiblingsInRow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Modifier
@@ -45,10 +49,12 @@ fun HomeScreen(
         Crossfade(currentSection) { section ->
             when (section) {
                 HomeSections.Feed -> Feed(
-                    onSnackClick = {},
+                    onSnackClick = {
+                        
+                    },
                     modifier = modifier
                 )
-                HomeSections.Search -> Text(text = "Search")
+                HomeSections.Search -> SimpleRelativeToSiblingsInRow()
                 HomeSections.Cart -> Text(text = "Cart")
                 HomeSections.Profile -> Text(text = "Profile")
             }
